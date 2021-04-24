@@ -2,7 +2,7 @@
 	namespace App\Models;
 	use CodeIgniter\Model;
 
-	class UnidadesModel extends Model
+	class CategoriasModel extends Model
 	{
 		protected $table      = 'categorias';
 	    protected $primaryKey = 'id';
