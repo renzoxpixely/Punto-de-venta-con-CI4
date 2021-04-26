@@ -24,6 +24,15 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+
+
+  <script type="text/javascript">
+    $('#modal-confirma').on('show.bs.modal', function(e){
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
+  </script>
+
+
 </body>
 
 </html>

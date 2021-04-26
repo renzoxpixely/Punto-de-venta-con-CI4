@@ -30,7 +30,7 @@
                             Nombre
                           </th>
                           <th>
-                            Nombre corto
+                            Reintegrar
                           </th>
                           <th>
                           </th>
@@ -43,7 +43,6 @@
                       	<tr>
                       		<td><?php echo $dato['id']; ?></td>
                       		<td><?php echo $dato['nombre']; ?></td>
-                      		<td><?php echo $dato['nombre_corto']; ?></td>
 
                       		<td><a href="<?php echo base_url(). '/categorias/reingresar/' . $dato['id'];?>" class="btn btn-warning"><i class="mdi mdi-arrow-up-bold menu-icon" ></i></a></td>
 

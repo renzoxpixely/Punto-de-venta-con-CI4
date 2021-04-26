@@ -26,10 +26,7 @@
                           <input class="form-control" type="text" name="nombre" id="nombre" value="<?php echo $datos['nombre']; ?>" autofocus require>
                         </div>
 
-                        <div clas="col-12 col-sm-6">
-                          <label>Nombre corto</label>
-                          <input class="form-control" type="text" name="nombre_corto" id="nombre_corto" value="<?php echo $datos['nombre_corto']; ?>"  require>
-                        </div>
+                       
                           </div>
                           </div>
                           

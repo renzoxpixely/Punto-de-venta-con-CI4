@@ -19,12 +19,12 @@
                       <div class="row">
                         <div clas="col-12 col-sm-6">
                           <label>Nombre</label>
-                          <input class="form-control" type="text" name="nombre" id="nombre" autofocus require>
+                          <input class="form-control" type="text" name="nombre" id="nombre" autofocus required>
                         </div>
 
                         <div clas="col-12 col-sm-6">
                           <label>Nombre corto</label>
-                          <input class="form-control" type="text" name="nombre_corto" id="nombre_corto"  require>
+                          <input class="form-control" type="text" name="nombre_corto" id="nombre_corto"  required>
                         </div>
                           </div>
                           </div>

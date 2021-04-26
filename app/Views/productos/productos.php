@@ -14,8 +14,8 @@
 
                   <div>
                   	<p>
-                  		<a href="<?php echo base_url(); ?>/unidades/nuevo" class="btn btn-info">Agregar</a>
-                  		<a href="<?php echo base_url(); ?>/unidades/eliminados" class="btn btn-info">Eliminados</a>
+                  		<a href="<?php echo base_url(); ?>/productos/nuevo" class="btn btn-info">Agregar</a>
+                  		<a href="<?php echo base_url(); ?>/productos/eliminados" class="btn btn-info">Eliminados</a>
                   	</p>
                   </div>
 
@@ -27,14 +27,21 @@
                             Id
                           </th>
                           <th>
+                            Código
+                          </th>
+                          <th>
                             Nombre
                           </th>
                           <th>
-                            Nombre corto
+                            Precio
+                          </th>
+                          <th>
+                            Existencias
                           </th>
                           <th>
                           </th>
-
+                          <th>
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -42,12 +49,14 @@
                       	 ?>
                       	<tr>
                       		<td><?php echo $dato['id']; ?></td>
+                      		<td><?php echo $dato['codigo']; ?></td>
                       		<td><?php echo $dato['nombre']; ?></td>
-                      		<td><?php echo $dato['nombre_corto']; ?></td>
+                          <td><?php echo $dato['precio_venta']; ?></td>
+                          <td><?php echo $dato['existencias']; ?></td>
 
-                      		<td><a href="<?php echo base_url(). '/unidades/editar/' . $dato['id'];?>" class="btn btn-warning"><i class="mdi mdi-pencil menu-icon" ></i></a></td>
+                      		<td><a href="<?php echo base_url(). '/productos/editar/' . $dato['id'];?>" class="btn btn-warning"><i class="mdi mdi-pencil menu-icon" ></i></a></td>
 
-                      		<td><a href="#" data-href="<?php echo base_url(). '/unidades/eliminar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Eliminar registro" class="btn btn-danger"><i class="mdi mdi-window-close menu-icon" ></i></a></td>
+                      		<td><a href="#" data-href="<?php echo base_url(). '/productos/eliminar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Eliminar registro" class="btn btn-danger"><i class="mdi mdi-window-close menu-icon" ></i></a></td>
                       		
                       	</tr>
 

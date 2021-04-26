@@ -7,10 +7,28 @@
 	class Unidades extends BaseController
 	{
 		protected $unidades;
+		protected $reglas;
 
 		public function __construct()
 		{
 			$this->unidades = new UnidadesModel();
+			helper(['form']);
+
+			$this->reglas = [
+				'nombre' =>[
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'El campo (field) es obligatorio.'
+				]
+			],
+				'nombre_corto' =>[
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'El campo (field) es obligatorio.'
+				]
+			]
+
+		 ];
 		}
 
 		public function index($activo = 1)
@@ -49,6 +67,20 @@
 
 		public function insertar()
 		{
+
+			if ($this->request->getMethod() == "post" && $this->validate($this->reglas)) {
+				$this->unidades->save(['nombre' => $this->request->getPost('nombre'), 'nombre_corto' => $this->request->getPost('nombre_corto')]);
+				return redirect()->to(base_url() . '/unidades');
+			} else {
+				$data = ['titulo' => 'Agregar unidad','validation' => $this->validator];
+
+				echo view('header');
+				echo view('unidades/nuevo', $data);
+				echo view('footer');
+			}
+			
+
+
 			$this->unidades->save(['nombre' => $this->request->getPost('nombre'),'nombre_corto'=>$this->request->getPost('nombre_corto')]);
 			return redirect()->to(base_url().'/unidades');
 		}

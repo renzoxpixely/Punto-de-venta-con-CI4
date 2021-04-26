@@ -5,7 +5,7 @@
               <div class="d-flex justify-content-between flex-wrap">
                 <div class="d-flex align-items-end flex-wrap">
                   <div class="mr-md-3 mr-xl-5">
-                    <h2>Contenido</h2>
+                    <h2>Vista nueva</h2>
                     <p class="mb-md-0">Your analytics dashboard template.</p>
                   </div>
                   <div class="d-flex">
