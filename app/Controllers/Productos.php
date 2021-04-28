@@ -94,6 +94,7 @@
 				'id_categoria' => $this->request->getPost('id_categoria')]);
 			return redirect()->to(base_url() . '/productos');
 			} else {
+
 			$categorias = $this->categorias->where('activo',1)->findAll();
 			$unidades = $this->unidades->where('activo',1)->findAll();
 			$data = ['titulo' => 'Agregar producto', 'unidades' => $unidades, 'categorias' => $categorias,'validation' => $this->validator];
@@ -104,8 +105,7 @@
 			
 
 
-			$this->productos->save(['nombre' => $this->request->getPost('nombre'),'nombre_corto'=>$this->request->getPost('nombre_corto')]);
-			return redirect()->to(base_url().'/productos');
+	
 		}
 
 

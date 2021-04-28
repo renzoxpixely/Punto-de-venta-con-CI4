@@ -190,5 +190,19 @@
             </div>
           </li>
 
+
+      <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>/clientes">
+              <i class="mdi mdi-account-multiple menu-icon"></i>
+              <span class="menu-title">Clientes</span>               
+            </a>
+
+            </li>
+
+
+
+
+
+
         </ul>
       </nav>

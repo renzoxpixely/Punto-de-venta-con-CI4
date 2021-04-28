@@ -31,7 +31,7 @@
 
                         <div clas="col-12 col-sm-6">
                           <label>Nombre</label>
-                          <input class="form-control" type="text" name="nombre" id="nombre"  required>
+                          <input class="form-control" type="text" name="nombre" id="nombre" value="<?php echo set_value('nombre') ?>" required>
                         </div>
                           </div>
                           </div>
