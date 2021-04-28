@@ -78,6 +78,7 @@
               <a class="dropdown-item">
                 <div class="item-thumbnail">
                     <img src="<?php echo base_url(); ?>/images/faces/face3.jpg" alt="image" class="profile-pic">
+                   <!-- <a class="navbar-brand" href="index.html">$nombre = $this->configuracion->where('nombre', 'tienda_nombre')->first();</a> -->
                 </div>
                 <div class="item-content flex-grow">
                   <h6 class="ellipsis font-weight-normal"> Johnson
@@ -200,7 +201,18 @@
             </li>
 
 
-
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#tools" aria-expanded="false" aria-controls="tools">
+              <i class="mdi mdi-nut menu-icon"></i>
+              <span class="menu-title">Administración</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="tools">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>/configuracion"> Configuración </a></li>
+              </ul>
+            </div>
+          </li>
 
 
 
