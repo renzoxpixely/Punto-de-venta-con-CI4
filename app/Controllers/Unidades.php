@@ -16,16 +16,16 @@
 
 			$this->reglas = [
 				'nombre' =>[
-			'rules' => 'required',
-			'errors' => [
-				'required' => 'El campo (field) es obligatorio.'
-				]
+					'rules' => 'required',
+					'errors' => [
+						'required' => 'El campo {field} es obligatorio.'
+						]
 			],
 				'nombre_corto' =>[
-			'rules' => 'required',
-			'errors' => [
-				'required' => 'El campo (field) es obligatorio.'
-				]
+					'rules' => 'required',
+					'errors' => [
+						'required' => 'El campo {field} es obligatorio.'
+						]
 			]
 
 		 ];
@@ -81,15 +81,21 @@
 			
 
 
-			$this->unidades->save(['nombre' => $this->request->getPost('nombre'),'nombre_corto'=>$this->request->getPost('nombre_corto')]);
-			return redirect()->to(base_url().'/unidades');
+			
 		}
 
 
-		public function editar($id)
+		public function editar($id, $valid=null)
 		{
 			$unidad = $this->unidades->where('id',$id)->first();
-			$data = ['titulo' => 'Editar unidad', 'datos'  => $unidad];
+
+			if ($valid != null) {
+				$data = ['titulo' => 'Editar unidad', 'datos'  => $unidad, 'validation' => $valid];
+			} else {
+				$data = ['titulo' => 'Editar unidad', 'datos'  => $unidad];
+			}
+			
+			
 		
 
 			echo view('header');
@@ -100,8 +106,13 @@
 
 		public function actualizar()
 		{
-			$this->unidades->update($this->request->getPost('id'),['nombre'=>$this->request->getPost('nombre'), 'nombre_corto' => $this->request->getPost('nombre_corto')]);
-			return redirect()->to(base_url().'/unidades');
+
+			if ($this->request->getMethod() == "post" && $this->validate($this->reglas)) {
+				$this->unidades->update($this->request->getPost('id'),['nombre'=>$this->request->getPost('nombre'), 'nombre_corto' => $this->request->getPost('nombre_corto')]);
+				return redirect()->to(base_url().'/unidades');
+			}else{
+				return $this->editar($this->request->getPost('id'), $this->validator);
+			}
 		}
 
 		public function eliminar($id)

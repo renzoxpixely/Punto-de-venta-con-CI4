@@ -12,7 +12,11 @@
                 <div class="card-body">
                   <h4 class="card-title"><?php echo $titulo ?></h4>
 
-                 <?php \Config\Services::validation()->listErrors(); ?>
+                 <?php  if (isset($validation)) {?>
+                  <div class="alert alert-danger">
+                    <?php echo $validation->listErrors(); ?>
+                 </div>
+                 <?php } ?>
 
                   <form method="POST" action="<?php echo base_url(); ?>/productos/insertar" autocompletar="off">
 
