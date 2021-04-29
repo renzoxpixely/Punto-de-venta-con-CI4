@@ -1,3 +1,6 @@
+<?php 
+  $user_session=session();
+ ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -141,7 +144,7 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <img src="<?php echo base_url(); ?>/images/faces/face5.jpg" alt="profile"/>
-              <span class="nav-profile-name">Louis Barnett</span>
+              <span class="nav-profile-name"><?php echo $user_session->nombre; ?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -210,6 +213,7 @@
             <div class="collapse" id="tools">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>/configuracion"> Configuración </a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>/usuarios"> Usuarios </a></li>
               </ul>
             </div>
           </li>
@@ -218,3 +222,5 @@
 
         </ul>
       </nav>
+
+      <?php print_r($user_session); ?>
