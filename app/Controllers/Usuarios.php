@@ -291,7 +291,7 @@
 				$session = session();
 				$usuario = $this->usuarios->where('id', $session->id_usuario)->first();
 
-				$data = ['titulo' => 'Cambiar contraseña', 'usuario' => $usuario];
+				$data = ['titulo' => 'Cambiar contraseña', 'usuario' => $usuario,'validation'=>$this->validator];
 
 				echo view('header');
 				echo view('usuarios/cambia_password', $data);
@@ -301,4 +301,4 @@
 
 
 	}
- 
+ /*user: marco123*/

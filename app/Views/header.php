@@ -147,7 +147,7 @@
               <span class="nav-profile-name"><?php echo $user_session->nombre; ?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="<?php echo base_url(); ?>/usuarios/cambia_password">
+              <a class="dropdown-item" href="<?php echo base_url(); ?>/usuarios/cambiar_password">
                 <i class="mdi mdi-settings text-primary"></i>
                 Cambiar contraseña
               </a>
