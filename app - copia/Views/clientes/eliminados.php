@@ -15,7 +15,7 @@
                   <div>
                   	<p>
                   	
-                  		<a href="<?php echo base_url(); ?>/usuarios" class="btn btn-info">Unidades</a>
+                  		<a href="<?php echo base_url(); ?>/clientes" class="btn btn-info">Productos</a>
                   	</p>
                   </div>
 
@@ -27,28 +27,34 @@
                             Id
                           </th>
                           <th>
-                            Nombre
+                            nombre
                           </th>
                           <th>
-                            Nombre corto
+                            Dirección
+                          </th>
+                          <th>
+                            Teléfono
+                          </th>
+                          <th>
+                            Correo
                           </th>
                           <th>
                           </th>
-
                         </tr>
                       </thead>
                       <tbody>
                       	<?php foreach ($datos as $dato) {           
                       	 ?>
                       	<tr>
-                      		<td><?php echo $dato['id']; ?></td>
-                      		<td><?php echo $dato['nombre']; ?></td>
-                      		<td><?php echo $dato['nombre_corto']; ?></td>
-
+                          <td><?php echo $dato['id']; ?></td>
+                          <td><?php echo $dato['nombre']; ?></td>
+                          <td><?php echo $dato['direccion']; ?></td>
+                          <td><?php echo $dato['telefono']; ?></td>
+                          <td><?php echo $dato['correo']; ?></td>
                       	
 
 
-                          <td><a href="#" data-href="<?php echo base_url(). '/usuarios/reingresar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Reingresar registro" class="btn btn-danger"><i class="mdi mdi-arrow-up-bold menu-icon" ></i></a></td>
+                          <td><a href="#" data-href="<?php echo base_url(). '/clientes/reingresar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Reingresar registro" class="btn btn-danger"><i class="mdi mdi-arrow-up-bold menu-icon" ></i></a></td>
                       		
                       	</tr>
 

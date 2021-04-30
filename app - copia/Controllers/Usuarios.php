@@ -257,7 +257,7 @@
 		}
 
 
-		public function cambiar_password()
+		public function cambia_password()
 		{
 			$session = session();
 			$usuario = $this->usuarios->where('id', $session->id_usuario)->first();

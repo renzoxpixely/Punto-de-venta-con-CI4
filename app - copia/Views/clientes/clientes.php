@@ -14,8 +14,8 @@
 
                   <div>
                   	<p>
-                  		<a href="<?php echo base_url(); ?>/usuarios/nuevo" class="btn btn-info">Agregar</a>
-                  		<a href="<?php echo base_url(); ?>/usuarios/eliminados" class="btn btn-info">Eliminados</a>
+                  		<a href="<?php echo base_url(); ?>/clientes/nuevo" class="btn btn-info">Agregar</a>
+                  		<a href="<?php echo base_url(); ?>/clientes/eliminados" class="btn btn-info">Eliminados</a>
                   	</p>
                   </div>
 
@@ -27,27 +27,33 @@
                             Id
                           </th>
                           <th>
-                            Usuario
+                            nombre
                           </th>
                           <th>
-                            Nombre
+                            Dirección
+                          </th>
+                          <th>
+                            Teléfono
+                          </th>
+                          <th>
+                            Correo
                           </th>
                           <th>
                           </th>
-
                         </tr>
                       </thead>
                       <tbody>
                       	<?php foreach ($datos as $dato) {           
                       	 ?>
                       	<tr>
-                      		<td><?php echo $dato['id']; ?></td>
-                      		<td><?php echo $dato['usuario']; ?></td>
+                          <td><?php echo $dato['id']; ?></td>
                       		<td><?php echo $dato['nombre']; ?></td>
+                      		<td><?php echo $dato['direccion']; ?></td>
+                          <td><?php echo $dato['telefono']; ?></td>
+                          <td><?php echo $dato['correo']; ?></td>
+                      		<td><a href="<?php echo base_url(). '/clientes/editar/' . $dato['id'];?>" class="btn btn-warning"><i class="mdi mdi-pencil menu-icon" ></i></a></td>
 
-                      		<td><a href="<?php echo base_url(). '/usuarios/cambiar_password/' . $dato['id'];?>" class="btn btn-warning"><i class="mdi mdi-pencil menu-icon" ></i></a></td>
-
-                      		<td><a href="#" data-href="<?php echo base_url(). '/usuarios/eliminar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Eliminar registro" class="btn btn-danger"><i class="mdi mdi-window-close menu-icon" ></i></a></td>
+                      		<td><a href="#" data-href="<?php echo base_url(). '/clientes/eliminar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Eliminar registro" class="btn btn-danger"><i class="mdi mdi-window-close menu-icon" ></i></a></td>
                       		
                       	</tr>
 

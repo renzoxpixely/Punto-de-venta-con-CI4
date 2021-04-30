@@ -15,40 +15,47 @@
                   <div>
                   	<p>
                   	
-                  		<a href="<?php echo base_url(); ?>/usuarios" class="btn btn-info">Unidades</a>
+                  		<a href="<?php echo base_url(); ?>/productos" class="btn btn-info">Productos</a>
                   	</p>
                   </div>
 
                   <div class="table-responsive">
                     <table class="table table-striped">
                       <thead>
-                        <tr>
+                       <tr>
                           <th>
                             Id
+                          </th>
+                          <th>
+                            Código
                           </th>
                           <th>
                             Nombre
                           </th>
                           <th>
-                            Nombre corto
+                            Precio
+                          </th>
+                          <th>
+                            Existencias
                           </th>
                           <th>
                           </th>
-
+        
                         </tr>
                       </thead>
                       <tbody>
                       	<?php foreach ($datos as $dato) {           
                       	 ?>
                       	<tr>
-                      		<td><?php echo $dato['id']; ?></td>
-                      		<td><?php echo $dato['nombre']; ?></td>
-                      		<td><?php echo $dato['nombre_corto']; ?></td>
-
+                          <td><?php echo $dato['id']; ?></td>
+                          <td><?php echo $dato['codigo']; ?></td>
+                          <td><?php echo $dato['nombre']; ?></td>
+                          <td><?php echo $dato['precio_venta']; ?></td>
+                          <td><?php echo $dato['existencias']; ?></td>
                       	
 
 
-                          <td><a href="#" data-href="<?php echo base_url(). '/usuarios/reingresar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Reingresar registro" class="btn btn-danger"><i class="mdi mdi-arrow-up-bold menu-icon" ></i></a></td>
+                          <td><a href="#" data-href="<?php echo base_url(). '/productos/reingresar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Reingresar registro" class="btn btn-danger"><i class="mdi mdi-arrow-up-bold menu-icon" ></i></a></td>
                       		
                       	</tr>
 

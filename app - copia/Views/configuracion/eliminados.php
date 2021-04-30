@@ -15,7 +15,7 @@
                   <div>
                   	<p>
                   	
-                  		<a href="<?php echo base_url(); ?>/usuarios" class="btn btn-info">Unidades</a>
+                  		<a href="<?php echo base_url(); ?>/unidades" class="btn btn-info">Unidades</a>
                   	</p>
                   </div>
 
@@ -48,7 +48,7 @@
                       	
 
 
-                          <td><a href="#" data-href="<?php echo base_url(). '/usuarios/reingresar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Reingresar registro" class="btn btn-danger"><i class="mdi mdi-arrow-up-bold menu-icon" ></i></a></td>
+                          <td><a href="#" data-href="<?php echo base_url(). '/unidades/reingresar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Reingresar registro" class="btn btn-danger"><i class="mdi mdi-arrow-up-bold menu-icon" ></i></a></td>
                       		
                       	</tr>
 

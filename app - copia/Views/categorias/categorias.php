@@ -14,8 +14,8 @@
 
                   <div>
                   	<p>
-                  	
-                  		<a href="<?php echo base_url(); ?>/usuarios" class="btn btn-info">Unidades</a>
+                  		<a href="<?php echo base_url(); ?>/categorias/nuevo" class="btn btn-info">Agregar</a>
+                  		<a href="<?php echo base_url(); ?>/categorias/eliminados" class="btn btn-info">Eliminados</a>
                   	</p>
                   </div>
 
@@ -43,12 +43,11 @@
                       	<tr>
                       		<td><?php echo $dato['id']; ?></td>
                       		<td><?php echo $dato['nombre']; ?></td>
-                      		<td><?php echo $dato['nombre_corto']; ?></td>
-
                       	
 
+                      		<td><a href="<?php echo base_url(). '/categorias/editar/' . $dato['id'];?>" class="btn btn-warning"><i class="mdi mdi-pencil menu-icon" ></i></a></td>
 
-                          <td><a href="#" data-href="<?php echo base_url(). '/usuarios/reingresar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Reingresar registro" class="btn btn-danger"><i class="mdi mdi-arrow-up-bold menu-icon" ></i></a></td>
+                      		<td><a href="<?php echo base_url(). '/categorias/eliminar/' . $dato['id'];?>" class="btn btn-danger"><i class="mdi mdi-window-close menu-icon" ></i></a></td>
                       		
                       	</tr>
 
@@ -80,27 +79,3 @@
           </div>
         </div>
         <!-- content-wrapper ends -->
-
-
-
-
-            <div class="modal fade" id="modal-confirma" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Reingresar registro</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>¿Desea reingresar este registro?</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
-                    <a type="button" class="btn btn-danger btn-ok">Sí</a>
-                  </div>
-                </div>
-              </div>
-            </div>
