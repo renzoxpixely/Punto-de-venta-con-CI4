@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>/css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="<?php echo base_url(); ?>/images/favicon.png" />
+
+  <script src="<?php echo base_url(); ?>/js/jquery-3.6.0.min.js"></script>
+    
 </head>
 
 <body>
@@ -202,6 +205,21 @@
             </a>
 
             </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#menucompras" aria-expanded="false" aria-controls="menucompras">
+              <i class="mdi mdi-cash-usd menu-icon"></i>
+              <span class="menu-title">Compras</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="menucompras">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>/compras/nuevo"> Nueva compra </a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>/compras"> Compras </a></li>
+               </ul>
+            </div>
+          </li>
 
 
           <li class="nav-item">
