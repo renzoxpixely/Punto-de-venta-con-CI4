@@ -12,7 +12,7 @@
 	    protected $returnType     = 'array';
 	    protected $useSoftDeletes = false;
 
-	    protected $allowedFields = ['folio', 'od_producto', 'codigo','nombre','cantidad','precio','subtotal'];
+	    protected $allowedFields = ['folio', 'id_producto', 'codigo','nombre','cantidad','precio','subtotal'];
 
 	    protected $useTimestamps = false;
 	    protected $createdField  = '';
@@ -22,6 +22,7 @@
 	    protected $validationRules    = [];
 	    protected $validationMessages = [];
 	    protected $skipValidation     = false;
+	    
 	}
 
  
