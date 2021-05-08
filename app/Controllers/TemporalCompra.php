@@ -3,12 +3,11 @@
 
 	use App\Controllers\BaseController;
 	use App\Models\TemporalCompraModel;
-	use App\Models\ProductoModel;
+	use App\Models\ProductosModel;
 
 	class TemporalCompra extends BaseController
 	{
 		protected $temporal_compra, $productos;
-		protected $reglas;
 
 		public function __construct()
 		{
@@ -17,22 +16,41 @@
 
 		}
 
-		public function insertar($id_producto, $cantidad, $id_compra)
+		public function inserta($id_producto, $cantidad, $id_compra)
 		{
 
-			if ($this->request->getMethod() == "post" && $this->validate($this->reglas)) {
-				$this->unidades->save(['nombre' => $this->request->getPost('nombre'), 'nombre_corto' => $this->request->getPost('nombre_corto')]);
-				return redirect()->to(base_url() . '/unidades');
-			} else {
-				$data = ['titulo' => 'Agregar unidad','validation' => $this->validator];
+			$error = '';
 
-				echo view('header');
-				echo view('unidades/nuevo', $data);
-				echo view('footer');
+			$producto = $this->productos->where('id', $id_producto)->first();
+
+			if($producto){
+				$datosExiste = $this->temporal_compra->porIdProductoCompra($id_producto, $id_compra);
+				if ($datosExiste) {
+					$cantidad = $datoExiste-> cantidad + $cantidad;
+					$subtotal = $cantidad * $datosExiste ->precio;
+				} else {
+					$subtotal = $cantidad * $producto['precio_compra'];
+
+					$this->temporal_compra->save([
+						'folio' => $id_compra,
+						'id_producto' => $id_producto,
+						'codigo' => $producto['codigo'],
+						'nombre' => $producto['nombre'],
+						'precio' => $producto['precio_compra'],
+						'cantidad' => $cantidad,
+						'subtotal' => $subtotal,
+					]);
+
+
+
+				}
+				
+			} else{
+				$error = 'No existe el producto';
 			}
-			
 
-
+			$res['error'] = $error;
+			echo json_encode($res);
 			
 		}
 

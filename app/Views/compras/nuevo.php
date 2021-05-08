@@ -1,4 +1,8 @@
-
+<?php
+  $id_compra = uniqid();
+?>
+   
+   
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -52,7 +56,7 @@
                           
                         <div clas="col-12 col-sm-4">
                           <label><br>&nbsp;</label>
-                          <button id="agregar_producto" name="agregar_producto" type="button" class="btn btn-primary form-control">Agregar producto</button>
+                          <button id="agregar_producto" name="agregar_producto" type="button" class="btn btn-primary form-control" onclick="agregarProducto(id_producto.value,cantidad.value, '<?php echo $id_compra; ?>')">Agregar producto</button>
                         </div>
 
                           </div>
@@ -114,7 +118,7 @@
             url: '<?php echo base_url(); ?>/productos/buscarPorCodigo/' + codigo,dataType: 'json',
             success: function(resultado){
               if(resultado == 0){
-                $(targCodigo).val('');
+                $(tagCodigo).val('');
               }else{
                 //$(tagCodigo).removeClass('has-error');
 
@@ -142,4 +146,50 @@
         }
       }
     }
+
+
+
+    function agregarProducto(id_producto, cantidad, id_compra){
+      if(id_producto != null && id_producto != 0 && cantidad > 0){
+          $.ajax({
+            url: '<?php echo base_url(); ?>/TemporalCompra/inserta/' + id_producto + "/" + cantidad + "/" +id_compra,
+            
+            success: function(resultado){
+              if(resultado == 0){
+                
+              }else{
+                //$(tagCodigo).removeClass('has-error');
+
+                // $("#resultado_error").html(resultado.error);
+
+                // if (resultado.existe) {
+                //   $("#id_producto").val(resultado.datos.id);
+                //   $("#nombre").val(resultado.datos.nombre);
+                //   $("#cantidad").val(1);
+                //   $("#precio_compra").val(resultado.datos.id);
+                //   $("#subtotal").val(resultado.datos.precio_compra);
+                //   $("#cantidad").focus();                 
+                // }
+                // else{
+                //   $("#id_producto").val('');
+                //   $("#nombre").val('');
+                //   $("#cantidad").val(1);
+                //   $("#precio_compra").val('');
+                //   $("#subtotal").val(''); 
+                // }
+              }
+            }
+
+          });
+        
+      }
+    }
+
+
+
+
+
+
+
+
  </script>

@@ -1,27 +1,35 @@
 <?php 
 	namespace App\Models;
 	use CodeIgniter\Model;
+	
+	
 
-	class ComprasModel extends Model
+	class TemporalCompraModel extends Model
 	{
-		protected $table      = 'compras';
+		protected $table      = 'temporal_compra';
 	    protected $primaryKey = 'id';
-
-	    protected $useAutoIncrement = true;
 
 	    protected $returnType     = 'array';
 	    protected $useSoftDeletes = false;
 
-	    protected $allowedFields = ['folio', 'total', 'id_usuario','activo'];
+	    protected $allowedFields = ['folio', 'id_producto', 'codigo','nombre','cantidad','precio','subtotal'];
 
-	    protected $useTimestamps = true;
-	    protected $createdField  = 'fecha_alta';
+	    protected $useTimestamps = false;
+	    protected $createdField  = '';
 	    protected $updatedField  = '';
 	    protected $deletedField  = '';
 
 	    protected $validationRules    = [];
 	    protected $validationMessages = [];
 	    protected $skipValidation     = false;
+
+		public function porIdProductoCompra($id_producto, $folio){
+			$this->select('*');
+			$this->where('folio', $folio);
+			$this->where('id_producto', $id_producto);
+			$datos = $this->get()->getRow();
+			return $datos;
+		}
 	}
 
  
