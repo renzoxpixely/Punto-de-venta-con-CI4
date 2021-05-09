@@ -30,6 +30,13 @@
 			$datos = $this->get()->getRow();
 			return $datos;
 		}
+
+		public function porCompra( $folio){
+			$this->select('*');
+			$this->where('folio', $folio);
+			$datos = $this->findAll();
+			return $datos;
+		}
 	}
 
  

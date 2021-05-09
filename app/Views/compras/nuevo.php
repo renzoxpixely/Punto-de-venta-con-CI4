@@ -158,25 +158,20 @@
               if(resultado == 0){
                 
               }else{
-                //$(tagCodigo).removeClass('has-error');
 
-                // $("#resultado_error").html(resultado.error);
+                var resultado = JSON.parse(resultado);
 
-                // if (resultado.existe) {
-                //   $("#id_producto").val(resultado.datos.id);
-                //   $("#nombre").val(resultado.datos.nombre);
-                //   $("#cantidad").val(1);
-                //   $("#precio_compra").val(resultado.datos.id);
-                //   $("#subtotal").val(resultado.datos.precio_compra);
-                //   $("#cantidad").focus();                 
-                // }
-                // else{
-                //   $("#id_producto").val('');
-                //   $("#nombre").val('');
-                //   $("#cantidad").val(1);
-                //   $("#precio_compra").val('');
-                //   $("#subtotal").val(''); 
-                // }
+                if(resultado.error == ''){
+                  $("#tablaProductos tbody").empty();
+                  $("#tablaProductos tbody").append(resultado.datos);
+                  $("#total").val(resultado.total);
+                  $("#id_producto").val('');
+                  $("#codigo").val('');
+                  $("#nombre").val('');
+                  $("#cantidad").val(1);
+                  $("#precio_compra").val('');
+                  $("#subtotal").val(''); 
+                }
               }
             }
 

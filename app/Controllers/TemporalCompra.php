@@ -49,53 +49,45 @@
 				$error = 'No existe el producto';
 			}
 
+			$res['datos'] = $this->cargarProductos($id_compra);
+			$res['total'] = $this->totalProductos($id_compra);
 			$res['error'] = $error;
 			echo json_encode($res);
 			
 		}
 
+		public function cargarProductos(){
+			$resultado = $this->tenporal_compra->porCompra($id_compra);
+			$fila = '';
+			$numFila = 0;
 
-		public function editar($id, $valid=null)
-		{
-			$unidad = $this->unidades->where('id',$id)->first();
-
-			if ($valid != null) {
-				$data = ['titulo' => 'Editar unidad', 'datos'  => $unidad, 'validation' => $valid];
-			} else {
-				$data = ['titulo' => 'Editar unidad', 'datos'  => $unidad];
+			foreach($resulado as $row){
+				$numFila++;
+				$fila .= "<tr id='fila".$numFila."'>" ;
+				$fila .= "<td>".$numFila."</td>";
+				$fila .= "<td/>".['codigo']."</td>";
+				$fila .= "<td/>".['nombre']."</td>";
+				$fila .= "<td/>".['precio']."</td>";
+				$fila .= "<td/>".['cantidad']."</td>";
+				$fila .= "<td/>".['subtotal']."</td>";
+				$fila .= "<td/><a onclick=\"eliminaProducto(".$row['id_producto'].",'".$id_compra."')\" class='borrar'><span class='fas fa-fw-fa-trash'></span></a></td>";
+				$fila .= "</tr>";
+				
 			}
-			
-			
-		
-
-			echo view('header');
-			echo view('unidades/editar', $data);
-			echo view('footer');
+			return $fila;
 		}
 
 
-		public function actualizar()
-		{
+		public function totalProductos(){
+			$resultado = $this->tenporal_compra->porCompra($id_compra);
+			$total = 0;
+			
 
-			if ($this->request->getMethod() == "post" && $this->validate($this->reglas)) {
-				$this->unidades->update($this->request->getPost('id'),['nombre'=>$this->request->getPost('nombre'), 'nombre_corto' => $this->request->getPost('nombre_corto')]);
-				return redirect()->to(base_url().'/unidades');
-			}else{
-				return $this->editar($this->request->getPost('id'), $this->validator);
+			foreach($resulado as $row){
+				$total += $row['subtotal'];
+				
 			}
-		}
-
-		public function eliminar($id)
-		{
-			$this->unidades->update($id, ['activo'=> 0]);
-			return redirect()->to(base_url().'/unidades');
-		}
-
-
-		public function reingresar($id)
-		{
-			$this->unidades->update($id, ['activo'=> 1]);
-			return redirect()->to(base_url().'/unidades');
+			return $fila;
 		}
 
 
