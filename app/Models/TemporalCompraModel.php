@@ -45,7 +45,7 @@
 			$this->update();
 		}
 
-		public function eliminarProducto($id_producto, $folio){
+		public function eliminarProductoCompra($id_producto, $folio){
 			$this->where('id_producto', $id_producto);
 			$this->where('folio', $folio);
 			$this->delete();
