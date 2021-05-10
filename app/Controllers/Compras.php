@@ -3,15 +3,19 @@
 
 	use App\Controllers\BaseController;
 	use App\Models\ComprasModel;
+	use App\Models\TemporalCompraModel;
+	use App\Models\DetalleCompraModel;
+
 
 	class Compras extends BaseController
 	{
-		protected $compras;
+		protected $compras, $temporal_compra, $detalle_compra;
 		protected $reglas;
 
 		public function __construct()
 		{
 			$this->compras = new ComprasModel();
+			$this->detalle_compra = new DetalleCompraModel();
 			helper(['form']);
 
 
@@ -59,69 +63,25 @@
 
 			$session = session();
 			
+			$resultadoId = $this->compras->insertaCompra($id_compra, $total, $session->id_usuario);
 			
-			
+			$this->temporal_compra = new TemporalCompraModel();
 
-			if ($this->request->getMethod() == "post" && $this->validate($this->reglas)) {
-				$this->unidades->save(['nombre' => $this->request->getPost('nombre'), 'nombre_corto' => $this->request->getPost('nombre_corto')]);
-				return redirect()->to(base_url() . '/unidades');
-			} else {
-				$data = ['titulo' => 'Agregar unidad','validation' => $this->validator];
+			if($resultadoId){
+				$resultadoCompra = $this->temporal_compra->porCompra($id_compra);
 
-				echo view('header');
-				echo view('unidades/nuevo', $data);
-				echo view('footer');
+				foreach ($resultadoCompra as $row){
+					$this->detalle_compra->save([
+						'id_compra' => $resultadoId,
+						'id_producto' => $row['id_producto'],
+						'nombre' => $row['nombre'],
+						'cantidad' => $row['cantidad'],
+						'precio' => $row['precio']
+					]);
+				}
 			}
-			
-
-
-			
+			return redirect()->to(base_url()."/productos");
 		}
-
-
-		public function editar($id, $valid=null)
-		{
-			$unidad = $this->unidades->where('id',$id)->first();
-
-			if ($valid != null) {
-				$data = ['titulo' => 'Editar unidad', 'datos'  => $unidad, 'validation' => $valid];
-			} else {
-				$data = ['titulo' => 'Editar unidad', 'datos'  => $unidad];
-			}
-			
-			
-		
-
-			echo view('header');
-			echo view('unidades/editar', $data);
-			echo view('footer');
-		}
-
-
-		public function actualizar()
-		{
-
-			if ($this->request->getMethod() == "post" && $this->validate($this->reglas)) {
-				$this->unidades->update($this->request->getPost('id'),['nombre'=>$this->request->getPost('nombre'), 'nombre_corto' => $this->request->getPost('nombre_corto')]);
-				return redirect()->to(base_url().'/unidades');
-			}else{
-				return $this->editar($this->request->getPost('id'), $this->validator);
-			}
-		}
-
-		public function eliminar($id)
-		{
-			$this->unidades->update($id, ['activo'=> 0]);
-			return redirect()->to(base_url().'/unidades');
-		}
-
-
-		public function reingresar($id)
-		{
-			$this->unidades->update($id, ['activo'=> 1]);
-			return redirect()->to(base_url().'/unidades');
-		}
-
 
 	}
  

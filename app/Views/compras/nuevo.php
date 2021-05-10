@@ -108,7 +108,7 @@
 
  <script>
     $(document).ready(function(){
-      $("#completar_compra").click(function(){
+      $("#completa_compra").click(function(){
         let nFila = $("#tablaProductos tr").length;
 
         if (nFila < 2){
