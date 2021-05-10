@@ -16,13 +16,14 @@
                 <div class="card-body">
 
 
-                  <form method="POST" action="<?php echo base_url(); ?>/compras/guarda" autocompletar="off">
+                  <form method="POST" id="form_compra" name="form_compra"  action="<?php echo base_url(); ?>/compras/guarda" autocompletar="off">
 
                     <div class="form-group">
                       <div class="row">
 
                         <div clas="col-12 col-sm-4">
                           <input type="hidden" name="id_producto" id="id_producto"/>
+                          <input type="hidden" name="id_compra" id="id_compra" value="<?php echo $id_compra; ?>" />
                           <label>Código</label>
 
                           <input class="form-control" type="text" name="codigo" id="codigo" autofocus placeholder="Escribe el codigo y enter" onkeyup="buscarProducto(event, this,this.value)">
@@ -107,7 +108,15 @@
 
  <script>
     $(document).ready(function(){
+      $("#completar_compra").click(function(){
+        let nFila = $("#tablaProductos tr").length;
 
+        if (nFila < 2){
+
+        }else{  
+          $("#form_compra").submit();
+        }
+      });
     });
 
     function buscarProducto(e, tagCodigo, codigo){

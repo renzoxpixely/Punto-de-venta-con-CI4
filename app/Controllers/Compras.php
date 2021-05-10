@@ -51,8 +51,16 @@
 			echo view('footer');
 		}
 
-		public function insertar()
+		public function guarda()
 		{
+
+			$id_compra = $this->request->getPost('id_compra');
+			$total = $this->request->getPost('total');
+
+			$session = session();
+			
+			
+			
 
 			if ($this->request->getMethod() == "post" && $this->validate($this->reglas)) {
 				$this->unidades->save(['nombre' => $this->request->getPost('nombre'), 'nombre_corto' => $this->request->getPost('nombre_corto')]);
