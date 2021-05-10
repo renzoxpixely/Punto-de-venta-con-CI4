@@ -168,7 +168,7 @@
                   $("#id_producto").val('');
                   $("#codigo").val('');
                   $("#nombre").val('');
-                  $("#cantidad").val(1);
+                  $("#cantidad").val();
                   $("#precio_compra").val('');
                   $("#subtotal").val(''); 
                 }

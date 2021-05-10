@@ -31,11 +31,14 @@
 			return $datos;
 		}
 
-		public function porCompra( $folio){
+		public function porCompra($folio){
 			$this->select('*');
 			$this->where('folio', $folio);
 			$datos = $this->findAll();
 			return $datos;
+		}
+		public function actualizarProductoCompra(){
+			
 		}
 	}
 

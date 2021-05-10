@@ -26,7 +26,7 @@
 			if($producto){
 				$datosExiste = $this->temporal_compra->porIdProductoCompra($id_producto, $id_compra);
 				if ($datosExiste) {
-					$cantidad = $datoExiste-> cantidad + $cantidad;
+					$cantidad = $datosExiste-> cantidad + $cantidad;
 					$subtotal = $cantidad * $datosExiste ->precio;
 				} else {
 					$subtotal = $cantidad * $producto['precio_compra'];
@@ -49,28 +49,28 @@
 				$error = 'No existe el producto';
 			}
 
-			$res['datos'] = $this->cargarProductos($id_compra);
+			$res['datos'] = $this->cargaProductos($id_compra);
 			$res['total'] = $this->totalProductos($id_compra);
 			$res['error'] = $error;
 			echo json_encode($res);
 			
 		}
 
-		public function cargarProductos(){
-			$resultado = $this->tenporal_compra->porCompra($id_compra);
+		public function cargaProductos($id_compra){
+			$resultado = $this->temporal_compra->porCompra($id_compra);
 			$fila = '';
 			$numFila = 0;
 
-			foreach($resulado as $row){
+			foreach($resultado as $row){
 				$numFila++;
-				$fila .= "<tr id='fila".$numFila."'>" ;
-				$fila .= "<td>".$numFila."</td>";
-				$fila .= "<td/>".['codigo']."</td>";
-				$fila .= "<td/>".['nombre']."</td>";
-				$fila .= "<td/>".['precio']."</td>";
-				$fila .= "<td/>".['cantidad']."</td>";
-				$fila .= "<td/>".['subtotal']."</td>";
-				$fila .= "<td/><a onclick=\"eliminaProducto(".$row['id_producto'].",'".$id_compra."')\" class='borrar'><span class='fas fa-fw-fa-trash'></span></a></td>";
+				$fila .= "<tr id='fila" . $numFila . "'>" ;
+				$fila .= "<td>" . $numFila . "</td>";
+				$fila .= "<td>" . $row['codigo'] . "</td>";
+				$fila .= "<td>" . $row['nombre'] . "</td>";
+				$fila .= "<td>" .$row['precio'] . "</td>";
+				$fila .= "<td>" .$row['cantidad'] . "</td>";
+				$fila .= "<td>" .$row['subtotal'] . "</td>";
+				$fila .= "<td><a onclick=\"eliminaProducto(" . $row['id_producto'].",'" . $id_compra . "')\" class='borrar'><span class='fas fa-fw fa-trash mdi-folder-remove'></span></a></td>";
 				$fila .= "</tr>";
 				
 			}
@@ -78,16 +78,17 @@
 		}
 
 
-		public function totalProductos(){
-			$resultado = $this->tenporal_compra->porCompra($id_compra);
+		public function totalProductos($id_compra){
+			
+			$resultado = $this->temporal_compra->porCompra($id_compra);
 			$total = 0;
 			
 
-			foreach($resulado as $row){
+			foreach($resultado as $row){
 				$total += $row['subtotal'];
 				
 			}
-			return $fila;
+			return $total;
 		}
 
 
