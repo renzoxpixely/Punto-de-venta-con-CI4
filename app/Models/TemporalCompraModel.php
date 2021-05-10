@@ -37,9 +37,20 @@
 			$datos = $this->findAll();
 			return $datos;
 		}
-		public function actualizarProductoCompra(){
-			
+		public function actualizarProductoCompra($id_producto, $folio, $cantidad, $subtotal){
+			$this->set('cantidad', $cantidad);
+			$this->set('subtotal', $subtotal);
+			$this->where('id_producto', $id_producto);
+			$this->where('folio', $folio);
+			$this->update();
 		}
+
+		public function eliminarProducto($id_producto, $folio){
+			$this->where('id_producto', $id_producto);
+			$this->where('folio', $folio);
+			$this->delete();
+		}
+
 	}
 
  

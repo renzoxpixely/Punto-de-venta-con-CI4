@@ -182,7 +182,25 @@
 
 
 
+    function eliminarProducto(id_producto, id_compra){
 
+          $.ajax({
+            url: '<?php echo base_url(); ?>/TemporalCompra/eliminar/' + id_producto + "/" + id_compra,
+            success: function(resultado){
+              if(resultado == 0){
+                $(tagCodigo).val('');
+              }else{
+                var resultado = JSON.parse(resultado);
+                $("#tablaProductos tbody").empty();
+                $("#tablaProductos tbody").append(resultado.datos);
+                $("#total").val(resultado.total);
+                }
+              }
+            }
+
+          );
+        }
+  
 
 
 
