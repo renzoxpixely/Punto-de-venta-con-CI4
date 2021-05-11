@@ -6,16 +6,18 @@
 	use App\Models\TemporalCompraModel;
 	use App\Models\DetalleCompraModel;
 	use App\Models\ProductosModel;
+	use App\Models\ConfiguracionModel;	
 
 	class Compras extends BaseController
 	{
-		protected $compras, $temporal_compra, $detalle_compra, $productos;
+		protected $compras, $temporal_compra, $detalle_compra, $productos,$configuracion;
 		protected $reglas;
 
 		public function __construct()
 		{
 			$this->compras = new ComprasModel();
 			$this->detalle_compra = new DetalleCompraModel();
+			$this->configuracion = new ConfiguracionModel();
 			helper(['form']);
 
 
@@ -100,7 +102,17 @@
 
 		function generaCompraPdf($id_compra){
 			$datosCompra = $this->compras->where('id', $id_compra)->first();
-			
+			$detalleCompra = $this->detalle_compra->select('*')->where('id_compra', $id_compra)->findAll();
+			$nombreTienda = $this->configuracion->select('valor')->where('nombre', 'tienda_nombre')->get()->getRow()->valor;
+			$direccionTienda = $this->configuracion->select('valor')->where('nombre','tienda_direccion')->get()->getRow()->valor;
+
+			$pdf = new \FPDF('P', 'mm', 'letter');
+			$pdf->AddPage();
+			$pdf->SetMargins(10,10,10);
+			$pdf->SetTitle("Compra");
+			$pdf->SetFont('Arial', 'B',10);
+
+			$pdf->Output("compra_pdf.pdf", "I");
 		}
 
 	}
