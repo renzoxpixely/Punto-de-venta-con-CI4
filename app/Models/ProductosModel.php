@@ -15,12 +15,19 @@
 
 	    protected $useTimestamps = true;
 	    protected $createdField  = 'fecha_alta';
-	    protected $updatedField  = 'fecha_edit';
+	    protected $updatedField  = '';
 	    protected $deletedField  = 'deleted_at';
 
 	    protected $validationRules    = [];
 	    protected $validationMessages = [];
 	    protected $skipValidation     = false;
+
+		public function actualizarStock($id_producto, $cantidad){
+			$this->set('existencias', "existencias + $cantidad", FALSE);
+			$this->where('id', $id_producto);
+			$this->update();
+			
+		}
 	}
 
  

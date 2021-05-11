@@ -5,11 +5,11 @@
 	use App\Models\ComprasModel;
 	use App\Models\TemporalCompraModel;
 	use App\Models\DetalleCompraModel;
-
+	use App\Models\ProductosModel;
 
 	class Compras extends BaseController
 	{
-		protected $compras, $temporal_compra, $detalle_compra;
+		protected $compras, $temporal_compra, $detalle_compra, $productos;
 		protected $reglas;
 
 		public function __construct()
@@ -59,7 +59,7 @@
 		{
 
 			$id_compra = $this->request->getPost('id_compra');
-			$total = $this->request->getPost('total');
+			$total = preg_replace('/[\$,]/','',$this->request->getPost('total'));
 
 			$session = session();
 			
@@ -78,9 +78,29 @@
 						'cantidad' => $row['cantidad'],
 						'precio' => $row['precio']
 					]);
+
+
+
+					$this->productos = new ProductosModel();
+					$this->productos -> actualizarStock($row['id_producto'], $row['cantidad']);
+					
 				}
+				$this->temporal_compra->eliminarCompra($id_compra);
 			}
 			return redirect()->to(base_url()."/productos");
+		}
+
+
+		function muestraCompraPdf($id_compra){
+			$data['id_compra'] = $id_compra;
+			echo view('header');
+			echo view('compras/ver_compra_pdf');
+			echo view('footer');
+		}
+
+		function generaCompraPdf($id_compra){
+			$datosCompra = $this->compras->where('id', $id_compra)->first();
+			
 		}
 
 	}
