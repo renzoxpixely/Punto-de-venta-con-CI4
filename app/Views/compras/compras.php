@@ -38,21 +38,21 @@
                         </tr>
                       </thead>
                       <tbody>
-                      	<?php foreach ($datos as $dato) {           
+                      	<?php //foreach ($datos as $dato) {           
                       	 ?>
                       	<tr>
-                      		<td><?php echo $dato['id']; ?></td>
-                      		<td><?php echo $dato['usuario']; ?></td>
-                      		<td><?php echo $dato['nombre']; ?></td>
+                      		<td><?php //echo $dato['id']; ?></td>
+                      		<td><?php //echo $dato['usuario']; ?></td>
+                      		<td><?php// echo $dato['nombre']; ?></td>
 
-                      		<td><a href="<?php echo base_url(). '/usuarios/cambiar_password/' . $dato['id'];?>" class="btn btn-warning"><i class="mdi mdi-pencil menu-icon" ></i></a></td>
+                      		<td><a href="<?php //echo base_url(). '/usuarios/cambiar_password/' . $dato['id'];?>" class="btn btn-warning"><i class="mdi mdi-pencil menu-icon" ></i></a></td>
 
-                      		<td><a href="#" data-href="<?php echo base_url(). '/usuarios/eliminar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Eliminar registro" class="btn btn-danger"><i class="mdi mdi-window-close menu-icon" ></i></a></td>
+                      		<td><a href="#" data-href="<?php //echo base_url(). '/usuarios/eliminar/' . $dato['id'];?>"data-toggle="modal" data-target="#modal-confirma" data-placement="top" title="Eliminar registro" class="btn btn-danger"><i class="mdi mdi-window-close menu-icon" ></i></a></td>
                       		
                       	</tr>
 
 
-                      <?php } ?>
+                      <?php //} ?>
 
 
                       </tbody>

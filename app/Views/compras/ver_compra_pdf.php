@@ -10,11 +10,12 @@
               <div class="card">
                 <div class="card-body">
                     <div class="panel">
-                    <iframe src="<?php echo base_url() . "/compras/generaCompraPdf" ?>" frameborder="0" class="embed-responsive-item" style="margin-top: 30px;"></iframe>
+                    <iframe src="<?php echo base_url() . "/compras/generaCompraPdf/" . $id_compra; ?>" frameborder="0" class="embed-responsive embed-responsive-4by3" style="margin-top: 30px;"></iframe>
                     </div>
                 </div>
         </div>
        </div>
       </div>        
    </div>
+   </div>  
    </div>  
